@@ -1,0 +1,44 @@
+# Dependencies folder (installed packages)
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build output (if your project compiles or bundles files)
+dist/
+build/
+
+# Coverage directory used by testing tools like Istanbul/nyc
+coverage/
+.nyc_output/
+
+# Environment variable files (avoid committing sensitive credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional: OS-specific files
+.DS_Store
+Thumbs.db
+
+# Optional: Editor and IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional: Temporary folders
+tmp/
+.temp/
