@@ -1,30 +1,29 @@
 require("dotenv").config();
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
 
-// const { ApolloServer } = require("apollo-server-express");
-
-// const { JWT_SECRET } = require("./src/config");
-const { JWT_SECRET } = require("./src/config/config");
-const Resolvers = require("./src/graphql/Resolvers");
-const TypeDefs = require("./src/graphql/TypeDefs");
+const typeDefs = require("./src/schema/typeDefs");
+const resolvers = require("./src/resolvers");
+const { JWT_SECRET } = require("./src/config");
 
 async function startServer() {
   const app = express();
 
   const server = new ApolloServer({
-    typeDefs: TypeDefs.GetTypeDef(),
-    resolvers: Resolvers.Getresolvers(),
+    typeDefs,
+    resolvers,
   });
 
   await server.start();
 
   // Express middleware stack
   app.use(cors());
-  app.use(express.json());
+  app.use(bodyParser.json());
+
   app.use(
     "/graphql",
     expressMiddleware(server, {
@@ -44,11 +43,9 @@ async function startServer() {
     })
   );
 
-  // server.applyMiddleware({ app, path: "/graphql" });
-
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () =>
-    console.log(`Server ready at http://localhost:${PORT}/graphql`)
+    console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`)
   );
 }
 

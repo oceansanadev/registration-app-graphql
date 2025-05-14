@@ -1,6 +1,6 @@
 const { gql } = require("graphql-tag");
 
-const typeDefs = gql`
+const User = gql`
   type User {
     id: ID!
     fullName: String!
@@ -39,4 +39,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+module.exports = User;
