@@ -1,23 +1,29 @@
 require("dotenv").config();
 const express = require("express");
-const jwt = require("jsonwebtoken");
+const cors = require("cors");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
-const cors = require("cors");
+const { makeExecutableSchema } = require("graphql-tools");
+const { applyMiddleware } = require("graphql-middleware");
 
-// const { ApolloServer } = require("apollo-server-express");
-
-// const { JWT_SECRET } = require("./src/config");
-const { JWT_SECRET } = require("./src/config/config");
 const Resolvers = require("./src/graphql/Resolvers");
 const TypeDefs = require("./src/graphql/TypeDefs");
+const { permissions } = require("./src/graphql/permissions");
+const { verifyTokenAndGetUser } = require("./src/helper/token");
+
+const schema = makeExecutableSchema({
+  typeDefs: TypeDefs.GetTypeDef(),
+  resolvers: Resolvers.Getresolvers(),
+});
+
+const schemaWithMiddleware = applyMiddleware(schema, permissions);
 
 async function startServer() {
   const app = express();
 
   const server = new ApolloServer({
-    typeDefs: TypeDefs.GetTypeDef(),
-    resolvers: Resolvers.Getresolvers(),
+    schema: schemaWithMiddleware,
+    introspection: true,
   });
 
   await server.start();
@@ -28,18 +34,14 @@ async function startServer() {
   app.use(
     "/graphql",
     expressMiddleware(server, {
-      context: async ({ req }) => {
+      context: async ({ req, res }) => {
         const authHeader = req.headers.authorization || "";
+        let user = null;
         if (authHeader) {
-          try {
-            const token = authHeader.replace("Bearer ", "");
-            const decoded = jwt.verify(token, JWT_SECRET);
-            return { user: decoded };
-          } catch (error) {
-            console.warn("Invalid or expired token");
-          }
+          const token = authHeader.replace("Bearer ", "");
+          user = await verifyTokenAndGetUser(token);
         }
-        return {};
+        return { user };
       },
     })
   );

@@ -5,14 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = {
   Query: {
     me: async (parent, args, context) => {
-      if (!context.user) {
-        throw new Error("Not authenticated");
-      }
       const user = await UserModel.findUserById(context.user.id);
-      if (!user) {
-        throw new Error("User not found");
-      }
-
       return user;
     },
   },
