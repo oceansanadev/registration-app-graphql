@@ -21,6 +21,7 @@ const verifyToken = (token) => {
 const verifyTokenAndGetUser = async (token) => {
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
+    // console.log("Decoded token:", decoded);
     const user = await UserModel.findUserById(decoded.id);
     if (!user) {
       console.warn("Token valid but user not found");

@@ -8,6 +8,14 @@ const User = {
       const user = await UserModel.findUserById(context.user.id);
       return user;
     },
+    user: async (parent, args) => {
+      const user = await UserModel.findUserById(args.id);
+      return user;
+    },
+    users: async (parent, args) => {
+      const users = await UserModel.findAllUsers();
+      return users;
+    },
   },
   Mutation: {
     register: async (parent, args) => {
@@ -49,21 +57,11 @@ const User = {
         user: newUser,
       };
     },
-    login: async (parent, { email, password }) => {
-      const user = await UserModel.findUserByEmail(email);
-      if (!user) {
-        throw new Error("No user found with that email.");
-      }
-
-      const valid = await bcrypt.compare(password, user.password);
-      if (!valid) {
-        throw new Error("Incorrect password.");
-      }
-
-      const token = generateToken(user.id);
+    login: async (parent, args) => {
+      const result = await UserModel.loginUser(args.email, args.password);
       return {
-        token,
-        user,
+        token: result.token,
+        user: result.user,
       };
     },
   },

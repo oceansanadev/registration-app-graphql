@@ -18,11 +18,25 @@ const schema = makeExecutableSchema({
 
 const schemaWithMiddleware = applyMiddleware(schema, permissions);
 
+const context = async ({ req, res }) => {
+  const authHeader = req.headers.authorization || "";
+  let user = null;
+
+  if (authHeader) {
+    const token = authHeader.replace("Bearer ", "");
+    user = await verifyTokenAndGetUser(token);
+  }
+  return { user };
+};
+
 async function startServer() {
   const app = express();
 
   const server = new ApolloServer({
     schema: schemaWithMiddleware,
+    // typeDefs: TypeDefs.GetTypeDef(),
+    // resolvers: Resolvers.Getresolvers(),
+    context,
     introspection: true,
   });
 
@@ -34,19 +48,9 @@ async function startServer() {
   app.use(
     "/graphql",
     expressMiddleware(server, {
-      context: async ({ req, res }) => {
-        const authHeader = req.headers.authorization || "";
-        let user = null;
-        if (authHeader) {
-          const token = authHeader.replace("Bearer ", "");
-          user = await verifyTokenAndGetUser(token);
-        }
-        return { user };
-      },
+      context,
     })
   );
-
-  // server.applyMiddleware({ app, path: "/graphql" });
 
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () =>

@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
-// const { pool } = require("../db");
 const { pool } = require("../config/postgres");
+const { generateToken } = require("../helper/token");
 
 const createUser = async ({
   fullName,
@@ -54,8 +54,36 @@ const findUserById = async (id) => {
   return result.rows[0];
 };
 
+const findAllUsers = async () => {
+  const query = `
+  SELECT * FROM users
+  `;
+  const result = await pool.query(query);
+  return result.rows;
+};
+
+const loginUser = async (email, password) => {
+  const user = await findUserByEmail(email);
+  if (!user) {
+    throw new Error("No user found with that email.");
+  }
+
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) {
+    throw new Error("Incorrect password.");
+  }
+
+  const token = generateToken(user.id);
+  return {
+    token,
+    user,
+  };
+};
+
 module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
+  findAllUsers,
+  loginUser,
 };
