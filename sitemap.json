@@ -1,0 +1,160 @@
+[
+  {
+    "name": "Pages",
+    "code": "pages",
+    "access": [
+      {
+        "label": "Projects",
+        "code": "projects",
+        "status": true
+      },
+      {
+        "label": "Clients",
+        "code": "clients",
+        "status": true
+      },
+      {
+        "label": "Suppliers",
+        "code": "suppliers",
+        "status": true
+      },
+      {
+        "label": "Panels",
+        "code": "panels",
+        "status": true
+      },
+      {
+        "label": "Inventory",
+        "code": "inventory",
+        "status": true
+      },
+      {
+        "label": "Staff Users",
+        "code": "staff_users",
+        "status": true
+      },
+      {
+        "label": "Invoice",
+        "code": "invoice",
+        "status": true
+      },
+      {
+        "label": "Analytics",
+        "code": "analytics",
+        "status": true
+      },
+      {
+        "label": "Reconciliation",
+        "code": "reconciliation",
+        "status": true
+      },
+      {
+        "label": "Archive",
+        "code": "archive",
+        "status": true
+      },
+      {
+        "label": "Settings",
+        "code": "settings",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Projects",
+    "code": "projects",
+    "access": [
+      {
+        "label": "Add",
+        "code": "add",
+        "status": true
+      },
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Edit",
+        "code": "edit",
+        "status": true
+      },
+      {
+        "label": "Delete",
+        "code": "delete",
+        "status": true
+      },
+      {
+        "label": "Submit for invoice",
+        "code": "invoice",
+        "status": true
+      },
+      {
+        "label": "View activity log",
+        "code": "view_log",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Surveys",
+    "code": "surveys",
+    "access": []
+  },
+  {
+    "name": "Supplier",
+    "code": "suppliers",
+    "access": []
+  },
+  {
+    "name": "Analytics",
+    "code": "analytics",
+    "access": []
+  },
+  {
+    "name": "Invoice",
+    "code": "invoice",
+    "access": []
+  },
+  {
+    "name": "Staff Users",
+    "code": "staff_users",
+    "access": []
+  },
+  {
+    "name": "Clients",
+    "code": "clients",
+    "access": []
+  },
+  {
+    "name": "Panels",
+    "code": "panels",
+    "access": []
+  },
+  {
+    "name": "Inventory",
+    "code": "inventory",
+    "access": []
+  },
+  {
+    "name": "Reconciliation",
+    "code": "reconciliation",
+    "access": []
+  },
+  {
+    "name": "Archive",
+    "code": "archive",
+    "access": []
+  },
+  {
+    "name": "Settings",
+    "code": "settings",
+    "access": [
+      {
+        "label": "General",
+        "code": "general",
+        "status": true
+      }
+    ]
+  }
+]

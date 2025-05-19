@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Pages",
+    "code": "pages",
+    "access": [
+      {
+        "label": "Projects",
+        "code": "projects",
+        "status": true
+      },
+      {
+        "label": "Panels",
+        "code": "panels",
+        "status": true
+      },
+      {
+        "label": "Staff Users",
+        "code": "staff_users",
+        "status": true
+      },
+      {
+        "label": "Invoice",
+        "code": "invoice",
+        "status": true
+      },
+      {
+        "label": "Analytics",
+        "code": "analytics",
+        "status": true
+      },
+      {
+        "label": "Settings",
+        "code": "settings",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Projects",
+    "code": "projects",
+    "access": [
+      {
+        "label": "Add",
+        "code": "add",
+        "status": true
+      },
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Edit",
+        "code": "edit",
+        "status": true
+      },
+      {
+        "label": "Delete",
+        "code": "delete",
+        "status": true
+      },
+      {
+        "label": "Submit for invoice",
+        "code": "invoice",
+        "status": true
+      },
+      {
+        "label": "View activity log",
+        "code": "view_log",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Supplier",
+    "code": "suppliers",
+    "access": [
+      {
+        "label": "Add",
+        "code": "add",
+        "status": true
+      },
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Edit",
+        "code": "edit",
+        "status": true
+      },
+      {
+        "label": "Delete",
+        "code": "delete",
+        "status": false
+      }
+    ]
+  },
+  {
+    "name": "Analytics",
+    "code": "analytics",
+    "access": [
+      {
+        "label": "Project Analytics",
+        "code": "project_analytics",
+        "status": true
+      },
+      {
+        "label": "Business Analytics",
+        "code": "business_analytics",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Invoice",
+    "code": "invoice",
+    "access": [
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Submit Invoice",
+        "code": "submit_invoice",
+        "status": true
+      },
+      {
+        "label": "Quick Look",
+        "code": "quick_look",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Staff Users",
+    "code": "staff_users",
+    "access": [
+      {
+        "label": "Add",
+        "code": "add",
+        "status": true
+      },
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Edit",
+        "code": "edit",
+        "status": true
+      },
+      {
+        "label": "Delete",
+        "code": "delete",
+        "status": true
+      }
+    ]
+  },
+
+  {
+    "name": "Panels",
+    "code": "panels",
+    "access": [
+      {
+        "label": "Add",
+        "code": "add",
+        "status": true
+      },
+      {
+        "label": "View",
+        "code": "view",
+        "status": true
+      },
+      {
+        "label": "Edit",
+        "code": "edit",
+        "status": true
+      },
+      {
+        "label": "Delete",
+        "code": "delete",
+        "status": true
+      }
+    ]
+  },
+  {
+    "name": "Settings",
+    "code": "settings",
+    "access": [
+      {
+        "label": "General",
+        "code": "general",
+        "status": true
+      }
+    ]
+  }
+]
